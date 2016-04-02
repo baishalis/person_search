@@ -136,7 +136,7 @@ var calculateScore = function() {
 
         for(var i = 0; i < set1.length; i++) {
             one += checkSet1(map[x], set1[i]);
-            //console.log(one + ' ' + set1[i])
+            console.log(one + ' ' + set1[i])
         }
 
         for(var i = 0; i < set2.length; i++)
@@ -148,7 +148,7 @@ var calculateScore = function() {
 
         console.log(one + ' ' + two +  ' ' + three);
 
-        if(one > 0 || (two > 0 && three > 0)) {
+        if(one > 0 && (two > 0 && three > 0)) {
             results[x] = 'very sure';
         }
         else if(two > 3) {
@@ -234,6 +234,7 @@ app.post('/login',function(req, res){
     var college = req.body.college;
     var lname = req.body.lname;
 
+
     console.log('Command-line input received:');
     console.log('  Username: ' + fname);
     console.log('  Email: ' + lname);
@@ -247,11 +248,14 @@ app.post('/login',function(req, res){
 
     var query;
 
-    insertWithPrior(1, phone);
-    insertWithPrior(1, email);
-    insertWithPrior(2, fname);
-    insertWithPrior(3, lname);
-    insertWithPrior(2, college);
+    if(req.body.hasOwnProperty('phone')) insertWithPrior(1, req.body.phone);
+    if(req.body.hasOwnProperty('email')) insertWithPrior(1, req.body.email);
+    if(req.body.hasOwnProperty('fname')) insertWithPrior(2, req.body.fname);
+    if(req.body.hasOwnProperty('lname')) insertWithPrior(3, req.body.lname);
+    if(req.body.hasOwnProperty('college')) insertWithPrior(2, req.body.college);
+    if(req.body.hasOwnProperty('gen')) insertWithPrior(3, req.body.gen);
+    if(req.body.hasOwnProperty('loc')) insertWithPrior(3, req.body.loc);
+    if(req.body.hasOwnProperty('org')) insertWithPrior(2, req.body.org);
 
     query = fname + " " + lname + " " + college;
 
@@ -278,6 +282,8 @@ app.post('/login',function(req, res){
 
 
     console.log(query);
+
+    //res.send(result);
 
 
 });
