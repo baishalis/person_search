@@ -224,25 +224,28 @@ var nextCounter = 0
 
 
 app.post('/login',function(req, res){
+
+    console.log(req.body);
+
     //var len = req.body.length;
-    var fname = req.body.First-Name;
-    //var phone = req.body.phone;
-    //var email = req.body.email;
-    //var college = req.body.college;
-    var lname = req.body.Last-Name;
+    var fname = req.body.fname;
+    var phone = req.body.phone;
+    var email = req.body.email;
+    var college = req.body.college;
+    var lname = req.body.lname;
 
     console.log('Command-line input received:');
     console.log('  Username: ' + fname);
     console.log('  Email: ' + lname);
-    //console.log('  Phone: ' + phone);
-    //console.log('  College Name: ' + college);
-    //console.log('  dob: ' + dob);
+    console.log('  Phone: ' + phone);
+    console.log('  College Name: ' + college);
+    console.log('  email: ' + email);
 
 
     //var query2=request.body.var2;
     //res.send(query1);
-/*
-    var query = "";
+
+    var query;
 
     insertWithPrior(1, phone);
     insertWithPrior(1, email);
@@ -250,7 +253,7 @@ app.post('/login',function(req, res){
     insertWithPrior(3, lname);
     insertWithPrior(2, college);
 
-    query = user + " " + college;
+    query = fname + " " + lname + " " + college;
 
     google(query, function (err, res){
         if (err) console.error(err)
@@ -276,7 +279,7 @@ app.post('/login',function(req, res){
 
     console.log(query);
 
-*/
+
 });
 
 
