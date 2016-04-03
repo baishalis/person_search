@@ -91,7 +91,7 @@ function form_create() {
 	$("#sub").click(function() {
 		//alert("hello");
 		var arr = {};
-		for (var i = 0; i < ele.length; i++) {
+		for (var i = 0; i <= ele.length - 1; i++) {
 			if($('#'+ele[i]).val() !== '') {
 				var v = $('#'+ele[i]).val();
 				arr[ele[i]] = v;
@@ -103,7 +103,7 @@ function form_create() {
 		//str += ele[i]+ " ";
 		}
 		var js = JSON.stringify(arr);
-	//	var jso = $("#form2").serialize();
+		//var jso = $("#form2").serialize();
 		console.log(js);
 
 		//sent json post to server
@@ -111,25 +111,26 @@ function form_create() {
 // JSONTest = function() {
 
 //     var resultDiv = $("#resultDivContainer");
-    $.ajax({
-        url: "http://localhost:3000/login",
-        type: "POST",
-        data: js,
-        dataType: "json",
-        success: function (result) {
-            switch (result) {
-                case true:
-                    processResponse(result);
-                    break;
-                default:
-                    resultDiv.html(result);
-            }
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-        alert(xhr.status);
-        alert(thrownError);
-        }
-    });
+
+//     $.ajax({
+//         url: "http://172.20.53.31:3000/login",
+//         type: "POST",
+//         data: js,
+//         dataType: "json",
+//         success: function (result) {
+//             switch (result) {
+//                 case true:
+//                     processResponse(result);
+//                     break;
+//                 default:
+//                     resultDiv.html(result);
+//             }
+//         },
+//         error: function (xhr, ajaxOptions, thrownError) {
+//         alert(xhr.status);
+//         alert(thrownError);
+//         }
+//     });
 // };
 		 // $.post( 
    //                "result.php",
